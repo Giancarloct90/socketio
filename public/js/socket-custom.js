@@ -23,6 +23,35 @@
         });
 
         // vamos a escuchar informacion que proviene del server, y estamos usando el evento de enviarMensaje
+        var msjTot = [{
+            usuario: 'Jack',
+            mensaje: 'Hello wolr'
+        }];
         socket.on('enviarMensaje', function (msj) {
             console.log('Server: ', msj);
+            msjTot.push({
+                usuario: msj.usuario,
+                mensaje: msj.mensaje
+            });
+            // console.log(msjTot);
+
+            msjTot.forEach((tu) => {
+                console.log(`name: ${tu.usuario}`);
+                console.log(`msj: ${tu.mensaje}`);
+            });
+
+            // var username = document.getElementById("userName");
+            // var usermsj = document.getElementById("userMsj");
+            // for
+
+            // var tuser = document.createTextNode(msj.usuario);
+            // var tmsj = document.createTextNode(msj.mensaje);
+
+            // username.appendChild(tuser);
+            // usermsj.appendChild(tmsj);
+
+
+            console.log(`Esto es lo que tiene el objeto msjTo: ${msjTot}`);
+
+
         });
