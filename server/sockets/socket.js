@@ -14,17 +14,18 @@ io.on('connection', (client) => {
 
     // escuchar al cliente
     // con el on y ponemos con primer parametro el evento que se creo en el frontend, todo esto lo resolvemos con un callback para poder recibir
-    client.on('enviarMensaje', (message, callback) => {
-        console.log(message);
-        if (message.usuario) {
-            callback({
-                respuesta: 'todo salio bien'
-            });
-        } else {
-            callback({
-                respuesta: 'Salio Malll!!!!!!'
-            });
-        }
+    client.on('enviarMensaje', (data, callback) => {
+        console.log(data);
+        client.broadcast.emit('enviarMensaje', data);
+        // if (message.usuario) {
+        //     callback({
+        //         respuesta: 'todo salio bien'
+        //     });
+        // } else {
+        //     callback({
+        //         respuesta: 'Salio Malll!!!!!!'
+        //     });
+        // }
     });
 
     // es de esta manera que enviamos un mensaje al servidor, con un emit
